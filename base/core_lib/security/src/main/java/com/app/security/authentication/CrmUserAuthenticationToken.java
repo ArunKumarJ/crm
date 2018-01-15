@@ -11,8 +11,24 @@ public class CrmUserAuthenticationToken extends AbstractCrmUserAuthenticationTok
 	 */
 	private static final long serialVersionUID = 7702268521522221779L;
 
-	public CrmUserAuthenticationToken(Collection<? extends GrantedAuthority> authorities, Collection<? extends GrantedAccess> accesses) {
+	private Object principal;
+	private Object userId;
+	private Object credentials;
+
+	public CrmUserAuthenticationToken(Object principal, Object userId, Object credentials) {
+		super(null, null);
+		this.principal = principal;
+		this.userId = userId;
+		this.credentials = credentials;
+	}
+
+	public CrmUserAuthenticationToken(Collection<? extends GrantedAuthority> authorities, Collection<? extends GrantedAccess> accesses, Object principal,
+			Object userId, Object credentials) {
 		super(authorities, accesses);
+		this.principal = principal;
+		this.userId = userId;
+		this.credentials = credentials;
+		super.setAuthenticated(true);
 	}
 
 	@Override
@@ -25,14 +41,16 @@ public class CrmUserAuthenticationToken extends AbstractCrmUserAuthenticationTok
 
 	@Override
 	public Object getCredentials() {
-		// TODO Auto-generated method stub
-		return null;
+		return credentials;
 	}
 
 	@Override
 	public Object getPrincipal() {
-		// TODO Auto-generated method stub
-		return null;
+		return principal;
+	}
+
+	public Object getUserId() {
+		return userId;
 	}
 
 }

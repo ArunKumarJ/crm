@@ -74,8 +74,15 @@ public abstract class AbstractCrmUserAuthenticationProvider implements Authentic
 	}
 
 	protected Authentication createSuccessAuthentication(Object principalToReturn, Authentication authentication, CrmUserDetails crmUserDetails) {
+		CrmUserAuthenticationToken result = new CrmUserAuthenticationToken(authentication.getAuthorities(), crmUserDetails.getAccesses(), crmUserDetails,
+				crmUserDetails.getUserId(), authentication.getCredentials());
+		result.setDetails(crmUserDetails);
+		return result;
+	}
 
-		return null;
+	@Override
+	public boolean supports(Class<?> authentication) {
+		return CrmUserAuthenticationToken.class.isAssignableFrom(authentication);
 	}
 
 	protected abstract void additionalAuthenticationChecks(CrmUserDetails crmUserDetails, UsernamePasswordAuthenticationToken authentication);
