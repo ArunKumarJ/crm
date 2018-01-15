@@ -86,6 +86,11 @@
 			<artifactId>hibernate-validator</artifactId>
 			<version>6.0.7.Final</version>
 		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-ehcache</artifactId>
+			<version>5.2.12.Final</version>
+		</dependency>
 
 		<!-- TestNG -->
 		<dependency>

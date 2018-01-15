@@ -4,6 +4,14 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
-	<import resource="spring_security_application.xml" />
-	<context:component-scan base-package="com.app.application" />
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value=""></property>
+		<property name="url" value=""></property>
+		<property name="username" value=""></property>
+		<property name="password" value=""></property>
+	</bean>
+
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource"></property>
+	</bean>
 </beans>
