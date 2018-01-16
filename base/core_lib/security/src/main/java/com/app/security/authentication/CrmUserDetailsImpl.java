@@ -33,7 +33,7 @@ public class CrmUserDetailsImpl implements CrmUserDetails {
 	 * @param credentialsNonExpired
 	 * @param enabled
 	 */
-	public CrmUserDetailsImpl(Collection<GrantedAccess> accesses, Collection<GrantedAuthority> authorities, String userId, String password,
+	public CrmUserDetailsImpl(Collection<? extends GrantedAccess> accesses, Collection<? extends  GrantedAuthority> authorities, String userId, String password,
 			boolean accountNonExpired, boolean accountNonLocked, boolean credentialsNonExpired, boolean enabled) {
 
 		if (((userId == null) || "".equals(userId)) || (password == null)) {

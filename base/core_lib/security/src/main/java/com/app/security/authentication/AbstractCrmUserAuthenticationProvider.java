@@ -28,7 +28,7 @@ public abstract class AbstractCrmUserAuthenticationProvider implements Authentic
 			cacheWasUsed = false;
 
 			try {
-				crmUserDetails = retrieveUser(username, (UsernamePasswordAuthenticationToken) authentication);
+				crmUserDetails = retrieveUser(username, (CrmUserAuthentication) authentication);
 			} catch (UsernameNotFoundException notFound) {
 				logger.debug("User '" + username + "' not found");
 
@@ -42,7 +42,7 @@ public abstract class AbstractCrmUserAuthenticationProvider implements Authentic
 			Assert.notNull(crmUserDetails, "retrieveUser returned null - a violation of the interface contract");
 		}
 
-		try {
+	/*	try {
 			// preAuthenticationChecks.check(crmUserDetails);
 			additionalAuthenticationChecks(crmUserDetails, (UsernamePasswordAuthenticationToken) authentication);
 		} catch (AuthenticationException exception) {
@@ -56,7 +56,7 @@ public abstract class AbstractCrmUserAuthenticationProvider implements Authentic
 			} else {
 				throw exception;
 			}
-		}
+		}*/
 
 		// postAuthenticationChecks.check(user);
 
@@ -87,5 +87,5 @@ public abstract class AbstractCrmUserAuthenticationProvider implements Authentic
 
 	protected abstract void additionalAuthenticationChecks(CrmUserDetails crmUserDetails, UsernamePasswordAuthenticationToken authentication);
 
-	protected abstract CrmUserDetails retrieveUser(String username, UsernamePasswordAuthenticationToken authentication);
+	protected abstract CrmUserDetails retrieveUser(String username, CrmUserAuthentication authentication);
 }

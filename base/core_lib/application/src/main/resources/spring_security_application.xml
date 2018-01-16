@@ -23,9 +23,9 @@
 
 	<bean id="executePermission" class="com.app.security.authentication.ApiExecutePermission"></bean>
 
-	<security:authentication-manager alias="authenticationProvider">
+	<security:authentication-manager>
 		<security:authentication-provider ref="authenticationProvider" />
 	</security:authentication-manager>
 
-	<bean id="authenticationProvider"></bean>
+	<bean id="authenticationProvider" class="com.app.security.authentication.CrmUserAuthenticationProvider"></bean>
 </beans>

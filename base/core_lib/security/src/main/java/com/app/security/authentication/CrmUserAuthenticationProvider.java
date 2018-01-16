@@ -1,5 +1,6 @@
 package com.app.security.authentication;
 
+import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
 public class CrmUserAuthenticationProvider extends AbstractCrmUserAuthenticationProvider {
@@ -11,9 +12,14 @@ public class CrmUserAuthenticationProvider extends AbstractCrmUserAuthentication
 	}
 
 	@Override
-	protected CrmUserDetails retrieveUser(String username, UsernamePasswordAuthenticationToken authentication) {
-		// TODO Auto-generated method stub
-		return null;
+	protected CrmUserDetails retrieveUser(String username, CrmUserAuthentication authentication) {
+		CrmUserDetails userDetails = null;
+		try {
+			userDetails = new CrmUserDetailsImpl(authentication.getAccesses(), authentication.getAuthorities(), username, "password", false, false, false, false);
+		} catch (Exception e) {
+			throw new AuthenticationServiceException(e.getMessage());
+		}
+		return userDetails;
 	}
 
 }
