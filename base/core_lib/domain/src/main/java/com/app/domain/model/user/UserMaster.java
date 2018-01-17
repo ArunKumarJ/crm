@@ -17,6 +17,9 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.NaturalId;
 
+import com.app.domain.model.acl.AppAccess;
+import com.app.domain.model.acl.AppAuthorty;
+
 @Entity
 @Table(name = "USER_MASTER")
 public class UserMaster implements Serializable {
@@ -43,6 +46,9 @@ public class UserMaster implements Serializable {
 
 	@OneToMany(mappedBy = "userMaster", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<UserAccess> userAccesses = new HashSet<>();
+
+	@OneToMany(mappedBy = "userMaster", cascade = CascadeType.ALL, orphanRemoval = true)
+	private Set<UserAuhtority> userAuhtorities = new HashSet<>();
 
 	/**
 	 * @return the id
@@ -134,6 +140,23 @@ public class UserMaster implements Serializable {
 		UserAccess userAccess = new UserAccess(this, appAccess);
 		userAccesses.add(userAccess);
 		appAccess.getUserAccesses().add(userAccess);
+	}
+
+	/**
+	 * @return the userAuhtorities
+	 */
+	public Set<UserAuhtority> getUserAuhtorities() {
+		return userAuhtorities;
+	}
+
+	/**
+	 * @param userAuhtorities
+	 *            the userAuhtorities to set
+	 */
+	public void addAuhtority(AppAuthorty appAuthorty) {
+		UserAuhtority userAuhtority = new UserAuhtority(this, appAuthorty);
+		userAuhtorities.add(userAuhtority);
+		appAuthorty.setUserAuhtority(userAuhtorities);
 	}
 
 }

@@ -4,6 +4,11 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 
+/**
+ * 
+ * @author Arun Kumar
+ *
+ */
 @Aspect
 public class BeforeAuthenticateAspect {
 

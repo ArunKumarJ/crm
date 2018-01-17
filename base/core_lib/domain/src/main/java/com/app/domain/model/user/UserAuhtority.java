@@ -7,31 +7,31 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.app.domain.model.acl.AppAccess;
+import com.app.domain.model.acl.AppAuthorty;
 
 @Entity
-@Table(name = "USER_ACCESS")
-public class UserAccess implements Serializable {
+@Table(name = "USER_AUHTORITY")
+public class UserAuhtority implements Serializable {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 81617774538048387L;
+	private static final long serialVersionUID = 9185892498502586313L;
 
 	@Id
 	@ManyToOne
 	private UserMaster userMaster;
 	@Id
 	@ManyToOne
-	private AppAccess appAccess;
+	private AppAuthorty appAuthorty;
 
-	public UserAccess() {
+	public UserAuhtority() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public UserAccess(UserMaster userMaster, AppAccess appAccess) {
+	public UserAuhtority(UserMaster userMaster, AppAuthorty appAuthorty) {
 		this.userMaster = userMaster;
-		this.appAccess = appAccess;
+		this.appAuthorty = appAuthorty;
 	}
 
 	/**
@@ -50,18 +50,18 @@ public class UserAccess implements Serializable {
 	}
 
 	/**
-	 * @return the appAccess
+	 * @return the appAuthorty
 	 */
-	public AppAccess getAppAccess() {
-		return appAccess;
+	public AppAuthorty getAppAuthorty() {
+		return appAuthorty;
 	}
 
 	/**
-	 * @param appAccess
-	 *            the appAccess to set
+	 * @param appAuthorty
+	 *            the appAuthorty to set
 	 */
-	public void setAppAccess(AppAccess appAccess) {
-		this.appAccess = appAccess;
+	public void setAppAuthorty(AppAuthorty appAuthorty) {
+		this.appAuthorty = appAuthorty;
 	}
 
 	/*
@@ -73,7 +73,7 @@ public class UserAccess implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((appAccess == null) ? 0 : appAccess.hashCode());
+		result = prime * result + ((appAuthorty == null) ? 0 : appAuthorty.hashCode());
 		result = prime * result + ((userMaster == null) ? 0 : userMaster.hashCode());
 		return result;
 	}
@@ -91,11 +91,11 @@ public class UserAccess implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		UserAccess other = (UserAccess) obj;
-		if (appAccess == null) {
-			if (other.appAccess != null)
+		UserAuhtority other = (UserAuhtority) obj;
+		if (appAuthorty == null) {
+			if (other.appAuthorty != null)
 				return false;
-		} else if (!appAccess.equals(other.appAccess))
+		} else if (!appAuthorty.equals(other.appAuthorty))
 			return false;
 		if (userMaster == null) {
 			if (other.userMaster != null)

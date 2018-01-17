@@ -7,6 +7,11 @@ import java.lang.annotation.Target;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * 
+ * @author @author Arun Kumar
+ *
+ */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(value = { ElementType.TYPE })
 @Component

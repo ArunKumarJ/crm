@@ -1,4 +1,4 @@
-package com.app.domain.model.user;
+package com.app.domain.model.acl;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -14,6 +14,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.app.domain.model.user.UserAccess;
+
 @Entity
 @Table(name = "APP_ACCESS")
 public class AppAccess implements Serializable {
@@ -27,11 +29,15 @@ public class AppAccess implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "APP_ACCESS_ID_GEN")
 	@SequenceGenerator(sequenceName = "APP_ACCESS_SEQ", name = "APP_ACCESS_ID_GEN", allocationSize = 1)
 	private Integer id;
-	@Column(name = "ACCESS")
+	@Column(name = "ACCESS", nullable = false)
 	private String access;
 
 	@OneToMany(mappedBy = "appAccess", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<UserAccess> userAccesses = new HashSet<>();
+
+	public AppAccess() {
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @return the id
